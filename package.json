@@ -1,0 +1,19 @@
+{
+    "name": "baivong.mudim",
+    "title": "Bộ gõ Tiếng Việt Mudim",
+    "description": "Trên Linux khi gõ Tiếng Việt thông qua các bộ gõ như IBus, nó sẽ không trực tiếp nhúng ký tự ngay khi ta gõ. Chính vì thế chức năng autocomplete trong Brackets sẽ không hoạt động như mong đợi. Extension Bộ gõ Tiếng Việt Mudim sẽ giúp khắc phục vấn đề đó. Lưu ý: Tắt bộ gõ Tiếng Việt trên máy khi dùng extension này.",
+    "homepage": "https://github.com/baivong/brackets-mudim",
+    "version": "0.9.0",
+    "author": "Zzbaivong",
+    "keywords": [
+        "Bộ gõ",
+        "keyboard",
+        "Tiếng Việt",
+        "Vietnamese",
+        "Mudim"
+    ],
+    "license": "MIT",
+    "engines": {
+        "brackets": ">=0.24.0"
+    }
+}
