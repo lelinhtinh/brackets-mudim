@@ -1,19 +1,34 @@
 {
-    "name": "baivong.mudim",
-    "title": "Bộ gõ Tiếng Việt Mudim",
-    "description": "Trên Linux khi gõ Tiếng Việt thông qua các bộ gõ như IBus, nó sẽ không trực tiếp nhúng ký tự ngay khi ta gõ. Chính vì thế chức năng autocomplete trong Brackets sẽ không hoạt động như mong đợi. Extension Bộ gõ Tiếng Việt Mudim sẽ giúp khắc phục vấn đề đó. Lưu ý: Tắt bộ gõ Tiếng Việt trên máy khi dùng extension này.",
-    "homepage": "https://github.com/baivong/brackets-mudim",
-    "version": "0.9.0",
-    "author": "Zzbaivong",
-    "keywords": [
-        "Bộ gõ",
-        "keyboard",
-        "Tiếng Việt",
-        "Vietnamese",
-        "Mudim"
-    ],
-    "license": "MIT",
-    "engines": {
-        "brackets": ">=0.24.0"
-    }
+  "name": "baivong.mudim",
+  "title": "Bộ gõ Tiếng Việt Mudim",
+  "description": "Hỗ trợ gõ Tiếng Việt trong Brackets, không bị lỗi chức năng autocomplete khi dùng trên Linux. Lưu ý: Tắt bộ gõ Tiếng Việt trên máy khi dùng extension này.",
+  "homepage": "https://github.com/baivong/brackets-avim",
+  "version": "1.0.0",
+  "author": "Zzbaivong <Zzbaivong@gmail.com> (https://baivong.github.io)",
+  "keywords": [
+	"Bộ gõ",
+	"keyboard",
+	"Tiếng Việt",
+	"Vietnamese",
+	"Mudim",
+	"brackets-extension"
+  ],
+  "repository": {
+	"type": "git",
+	"url": "git+https://github.com/baivong/brackets-mudim.git"
+  },
+  "license": "MIT",
+  "engines": {
+	"brackets": ">=0.24.0"
+  },
+  "bugs": {
+	"url": "https://github.com/baivong/brackets-mudim/issues"
+  },
+  "main": "main.js",
+  "scripts": {
+	"test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+	"eslint": "^3.19.0"
+  }
 }

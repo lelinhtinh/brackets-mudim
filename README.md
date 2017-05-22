@@ -1,30 +1,37 @@
 # Brackets-Mudim
-Trên Linux, khi bạn gõ Tiếng Việt thông qua các bộ gõ như IBus, nó sẽ không trực tiếp nhúng ký tự ngay khi đang gõ. Chính vì thế, chức năng autocomplete trong Brackets sẽ không đưa ra gợi ý trong lúc bạn gõ qua nguyên âm và các ký tự đặt dấu.
-Extension Bộ gõ Tiếng Việt Mudim sẽ giúp khắc phục vấn đề đó.
+
+Extension này sẽ tích hợp bộ gõ Mudim vào Brackets, hỗ trợ bạn gõ được Tiếng Việt mà không cần đến bộ gõ bên ngoài.
+
+Quan trọng nhất là, trên Linux, bộ gõ Tiếng Việt Mudim giúp bạn không gặp lỗi khi sử dụng chức năng autocomplete như khi dùng các bộ gõ trên máy.
+
+**Lưu ý**: *Tắt bộ gõ Tiếng Việt trên máy khi dùng extension này. Ví dụ: ibus-unikey, fcitx-unikey, ...*
 
 ## Cài đặt
 
-###Cách 1
-1. Tải **Brackets-Mudim** về máy https://github.com/baivong/brackets-mudim/archive/master.zip
-2. Giải nén và chép vào thư mục **extensions / user** của Brackets (**Help > Show Extensions Folder**).
-3. Khởi chạy lại Brackets (**F5**).
+### Cách 1
 
-###Cách 2
-1. Mở trình quản lý Extension (**File > Extension Manager...**).
-2. Tìm Extension *Bộ gõ Tiếng Việt Mudim* với từ khoá ```Mudim```
-3. **Install** và khởi chạy lại Brackets (**F5**).
+1. Mở trình quản lý Extension (**File > Extension Manager...**)
+2. Tìm Extension **Bộ gõ Tiếng Việt Mudim** với từ khoá `Mudim`
+3. Nhấn **Install**
+
+### Cách 2
+
+1. Tải [brackets-mudim.zip](https://github.com/baivong/brackets-mudim/releases) về máy
+2. Giải nén và chép vào thư mục **extensions / user** của Brackets (**Help > Show Extensions Folder**)
+3. Khởi chạy lại Brackets (**F5**)
 
 ## Hướng dẫn
+
 Bật / tắt bằng cách chọn trên menu **Edit > Bộ gõ Mudim**.
 
-Chọn kiểu gõ **Debug > Open Preferences File** tìm thông số ```baivong.mudim.method``` và thay giá trị tương ứng với kiểu gõ bạn cần:
+Chọn kiểu gõ từ tùy chọn ở thanh trạng thái.
 
-1. VNI
-2. Telex
-3. Viqr
-4. Tổng hợp
-5. Tự động
+![Chọn kiểu gõ Tiếng Việt trong Brackets](screenshot.png)
 
-Ví dụ, chọn kiểu gõ **VNI** thì dùng ```"baivong.mudim.method": 1```
+## Thông tin bộ gõ Mudim
 
-Lưu lại.
+**Tác giả**: Mudzot <mudzot@gmail.com>
+
+**Trang chủ**: [Mudzot's Input Method](http:/code.google.com/p/mudim)
+
+**Phiên bản**: 29-05-2008
