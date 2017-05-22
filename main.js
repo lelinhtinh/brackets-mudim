@@ -1,65 +1,77 @@
-/*jslint vars: true, plusplus: true, devel: true, nomen: true, regexp: true, indent: 4, maxerr: 50 */
-/*global define, $, brackets, Mudim */
+/*global define, brackets, Mudim */
 
-define(function (require, exports, module) {
-    "use strict";
+define(function (require) {
+    'use strict';
 
-    var Menus = brackets.getModule("command/Menus"),
-        AppInit = brackets.getModule("utils/AppInit"),
-        CommandManager = brackets.getModule("command/CommandManager"),
-        PreferencesManager = brackets.getModule("preferences/PreferencesManager");
+    require('vendor/mudim-0.9-r162');
 
-    var COMMAND_ID = "baivong.mudim",
-        COMMAND_MUDIM_ON = COMMAND_ID + ".on",
-        mudimPreferences = PreferencesManager.getExtensionPrefs(COMMAND_ID);
+    var COMMAND_ID = 'baivong.mudim',
+        COMMAND_LABEL = ['', 'VNI', 'TELEX', 'VIQR', 'MIX', 'AUTO', '---', 'OFF'],
 
-    var mudimOn = mudimPreferences.get("on"),
-        mudimMethod = mudimPreferences.get("method");
+        EDITOR_MENU = 'mudim-menu',
+        EDITOR_STATUS = 'mudim-status',
 
-    require("mudim");
+        AppInit = brackets.getModule('utils/AppInit'),
+        StatusBar = brackets.getModule('widgets/StatusBar'),
 
-    if (mudimOn === undefined) {
-        mudimOn = true;
-    }
+        PreferencesManager = brackets.getModule('preferences/PreferencesManager'),
+        prefs = PreferencesManager.getExtensionPrefs(COMMAND_ID),
 
-    if (mudimMethod === undefined) {
-        mudimPreferences.set("method", 5);
-    }
+        DropdownButton = brackets.getModule('widgets/DropdownButton'),
+        ddMethod = new DropdownButton.DropdownButton('OFF', COMMAND_LABEL),
 
-    var mudimMenu = CommandManager.register("Bộ gõ Mudim", COMMAND_MUDIM_ON, function () {
-        if (mudimPreferences.get("on")) {
-            mudimOn = false;
-            Mudim.SetMethod(0);
+        Menus = brackets.getModule('command/Menus'),
+        menu = Menus.getMenu(Menus.AppMenuBar.EDIT_MENU),
+
+        CommandManager = brackets.getModule('command/CommandManager'),
+        mudimMenu = CommandManager.register('Bộ gõ Mudim', EDITOR_MENU, function () {
+            var isActive = prefs.get('active') ? false : true;
+            prefs.set('active', isActive);
+            prefs.save();
+        });
+
+
+    prefs.definePreference('active', 'boolean', false);
+    prefs.definePreference('method', 'number', 5);
+
+    menu.addMenuDivider();
+    menu.addMenuItem(EDITOR_MENU);
+
+    StatusBar.addIndicator(EDITOR_STATUS, ddMethod.$button, true, 'btn btn-dropdown btn-status-bar', 'Chọn kiểu gõ Tiếng Việt', 'status-overwrite');
+
+    ddMethod.on('select', function (event, item, itemIndex) {
+        if (itemIndex === 7) { // OFF
+            prefs.set('active', false);
         } else {
-            mudimOn = true;
-            Mudim.SetMethod(mudimPreferences.get("method"));
+            prefs.set('active', true);
+            prefs.set('method', itemIndex);
         }
-        mudimMenu.setChecked(mudimOn);
-        mudimPreferences.set("on", mudimOn);
+        prefs.save();
     });
 
-    if (mudimOn) {
-        mudimMenu.setChecked(true);
-        mudimPreferences.set("on", true);
-    }
+    prefs.on('change', function () {
+        var isActive = prefs.get('active'),
+            currentMethod = prefs.get('method');
+
+        mudimMenu.setChecked(isActive);
+        if (isActive) {
+            ddMethod.$button.text(COMMAND_LABEL[currentMethod]);
+        } else {
+            ddMethod.$button.text(COMMAND_LABEL[7]);
+        }
+
+        if (currentMethod < 1 || currentMethod > 5 || !isActive) currentMethod = 0;
+        Mudim.SetMethod(currentMethod);
+    });
 
     AppInit.appReady(function () {
-
         Mudim.BeforeInit = function () {
-            Mudim.IGNORE_ID = ["email", "url"];
+            Mudim.IGNORE_ID = ['email', 'url'];
         };
         Mudim.AfterInit = function () {
-            if (mudimPreferences.get("on")) {
-                Mudim.SetMethod(mudimPreferences.get("method"));
-            } else {
-                Mudim.SetMethod(0);
-            }
             Mudim.HidePanel();
         };
+        prefs.trigger('change');
     });
-
-    var menu = Menus.getMenu(Menus.AppMenuBar.EDIT_MENU);
-    menu.addMenuDivider();
-    menu.addMenuItem(COMMAND_MUDIM_ON);
 
 });
