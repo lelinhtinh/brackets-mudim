@@ -2,7 +2,7 @@
   "name": "baivong.mudim",
   "title": "Bộ gõ Tiếng Việt Mudim",
   "description": "Hỗ trợ gõ Tiếng Việt trong Brackets, không bị lỗi chức năng autocomplete khi dùng trên Linux. Lưu ý: Tắt bộ gõ Tiếng Việt trên máy khi dùng extension này.",
-  "homepage": "https://github.com/baivong/brackets-avim",
+  "homepage": "https://github.com/baivong/brackets-mudim",
   "version": "1.0.0",
   "author": "Zzbaivong <Zzbaivong@gmail.com> (https://baivong.github.io)",
   "keywords": [
